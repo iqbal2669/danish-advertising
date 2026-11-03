@@ -1,6 +1,6 @@
-
 import './App.css'
 import danishLogo from './assets/Danish logo.png'
+import TodoList from './TodoList.jsx'
 function App() {
   return (
     <div className="website">
@@ -135,7 +135,7 @@ function App() {
           WhatsApp Us
         </a>
       </section>
-
+<TodoList />
       {/* Footer */}
       <footer>
         <h3>DANISH ADVERTISING</h3>
