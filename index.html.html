@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<!--
+=====================================================================
+ DANISH ADVERTISING - Single File Website (HTML + CSS + JavaScript)
+=====================================================================
+ HOW TO EDIT (beginner friendly):
+  1. COLORS / FONTS / SPACING ... search for ":root" in the CSS section.
+  2. PHONE / EMAIL / ADDRESS .... search for "EDIT CONTACT" in the HTML.
+  3. WHATSAPP NUMBER ............ search for "WHATSAPP_NUMBER" in the JavaScript.
+  4. GOOGLE MAP ................. search for "GOOGLE MAPS" in the HTML.
+  5. IMAGES ..................... search for "REPLACE IMAGE" in the HTML.
+     Put your pictures in a folder called "images" next to this file,
+     then change the src="..." to your file name, e.g. src="images/logo1.jpg".
+     Until a real image exists, a colored placeholder is shown automatically.
+  6. HERO BACKGROUND ............ search for "REPLACE HERO BACKGROUND" in the CSS.
+=====================================================================
+-->
+<html lang="en">
+<head>
+  <!-- Character set and mobile viewport (required for responsive design) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: page title and description with keywords -->
+  <title>DANISH ADVERTISING | Graphic Design &amp; Digital Printing in Mumbai</title>
+  <meta name="description" content="DANISH ADVERTISING, Mumbai: graphic design Mumbai, digital printing Mumbai, offset, DTF and screen printing, packaging design, commercial printing and advertising services. Export enquiries welcome for Saudi Arabia and the Gulf." />
+  <meta name="keywords" content="graphic design Mumbai, digital printing Mumbai, packaging design, commercial printing, advertising services, DTF printing, offset printing" />
+  <meta name="theme-color" content="#0a1a3a" />
+
+  <!-- OPTIONAL Google Font. To change the font, replace "Poppins" and "Playfair Display"
+       here AND in the --font-body / --font-heading variables below.
+       If you are offline, the site falls back to system fonts automatically. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===============================================================
+       1. THEME VARIABLES - change these to restyle the whole site
+       =============================================================== */
+    :root {
+      /* Colors */
+      --navy-900: #06122b;
+      --navy-800: #0a1a3a;   /* main dark navy */
+      --navy-700: #12285a;
+      --orange:   #ff7a1a;   /* accent color */
+      --orange-dark: #e56400;
+      --white:    #ffffff;
+      --off-white:#f4f6fb;
+      --text:     #1d2a44;
+      --muted:    #5d6b85;
+
+      /* Fonts */
+      --font-body: "Poppins", "Segoe UI", Arial, sans-serif;
+      --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+
+      /* Font sizes */
+      --fs-sm: 0.9rem;
+      --fs-base: 1rem;
+      --fs-lg: 1.15rem;
+      --fs-h2: clamp(1.8rem, 4vw, 2.6rem);
+      --fs-h1: clamp(2.1rem, 6vw, 4rem);
+
+      /* Spacing */
+      --space-1: 0.5rem;
+      --space-2: 1rem;
+      --space-3: 1.5rem;
+      --space-4: 2.5rem;
+      --space-5: 4.5rem;
+
+      /* Misc */
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(6, 18, 43, 0.12);
+      --shadow-lg: 0 18px 45px rgba(6, 18, 43, 0.22);
+      --transition: 0.3s ease;
+      --nav-height: 72px;
+    }
+
+    /* ===============================================================
+       2. BASE / RESET (mobile-first: these styles apply to all screens)
+       =============================================================== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--fs-base);
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; margin: 0 0 var(--space-2); color: var(--navy-800); }
+    p { margin: 0 0 var(--space-2); }
+    :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+    .container { width: min(1180px, 92%); margin-inline: auto; }
+    .section { padding: var(--space-5) 0; }
+    .section--alt { background: var(--off-white); }
+    .section--dark { background: linear-gradient(135deg, var(--navy-900), var(--navy-700)); color: var(--white); }
+    .section--dark h2, .section--dark h3 { color: var(--white); }
+
+    .section-head { text-align: center; max-width: 680px; margin: 0 auto var(--space-4); }
+    .section-head h2 { font-size: var(--fs-h2); }
+    .eyebrow {
+      display: inline-block; font-size: var(--fs-sm); font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: var(--space-1);
+    }
+    .section-head p { color: var(--muted); }
+    .section--dark .section-head p { color: #c5d0e8; }
+
+    /* ===============================================================
+       3. BUTTONS
+       =============================================================== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.85rem 1.7rem; border-radius: 50px; border: 2px solid transparent;
+      font: 600 var(--fs-base) var(--font-body); cursor: pointer;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition), color var(--transition);
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn--primary { background: var(--orange); color: var(--white); box-shadow: 0 8px 20px rgba(255,122,26,0.4); }
+    .btn--primary:hover { background: var(--orange-dark); }
+    .btn--outline { border-color: var(--white); color: var(--white); background: transparent; }
+    .btn--outline:hover { background: var(--white); color: var(--navy-800); }
+    .btn--whatsapp { background: #25d366; color: var(--white); }
+    .btn--whatsapp:hover { background: #1ebd5a; }
+
+    /* ===============================================================
+       4. HEADER / STICKY NAVIGATION
+       =============================================================== */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-height); background: rgba(6, 18, 43, 0.92);
+      backdrop-filter: blur(10px); transition: box-shadow var(--transition);
+    }
+    .site-header.scrolled { box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: var(--nav-height); }
+    .brand { display: flex; align-items: center; gap: 0.6rem; color: var(--white); font-weight: 700; letter-spacing: 1px; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 10px; background: var(--orange);
+      display: grid; place-items: center; font-family: var(--font-heading); font-size: 1.3rem;
+    }
+    .brand span.accent { color: var(--orange); }
+
+    /* Mobile menu: hidden by default, slides down when .open is added by JS */
+    .nav-links {
+      position: absolute; top: var(--nav-height); left: 0; right: 0;
+      background: var(--navy-900); flex-direction: column; display: flex;
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+    }
+    .nav-links.open { max-height: 480px; }
+    .nav-links a {
+      display: block; padding: 0.9rem 1.5rem; color: #dbe4f7; font-weight: 500;
+      border-top: 1px solid rgba(255,255,255,0.06); transition: color var(--transition), background var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--orange); background: rgba(255,255,255,0.04); }
+
+    /* Hamburger button */
+    .hamburger { background: none; border: 0; cursor: pointer; padding: 8px; display: grid; gap: 5px; }
+    .hamburger span { display: block; width: 26px; height: 3px; background: var(--white); border-radius: 3px; transition: transform var(--transition), opacity var(--transition); }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* ===============================================================
+       5. HERO
+       =============================================================== */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; position: relative;
+      padding-top: var(--nav-height); color: var(--white); overflow: hidden;
+      /* REPLACE HERO BACKGROUND: swap the last line with
+         url("images/hero.jpg") center/cover no-repeat
+         e.g. background: linear-gradient(rgba(6,18,43,.85), rgba(6,18,43,.85)), url("images/hero.jpg") center/cover; */
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,122,26,0.35), transparent 40%),
+        radial-gradient(circle at 10% 90%, rgba(40,80,170,0.5), transparent 45%),
+        linear-gradient(135deg, var(--navy-900), var(--navy-700));
+    }
+    /* Decorative floating shapes */
+    .hero::before, .hero::after {
+      content: ""; position: absolute; border-radius: 50%; opacity: 0.12; background: var(--orange);
+      animation: float 9s ease-in-out infinite;
+    }
+    .hero::before { width: 320px; height: 320px; right: -80px; bottom: -80px; }
+    .hero::after { width: 160px; height: 160px; left: 6%; top: 18%; animation-delay: -4s; background: var(--white); }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-24px); } }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 780px; padding: var(--space-4) 0; }
+    .hero h1 { font-size: var(--fs-h1); color: var(--white); }
+    .hero h1 .accent { color: var(--orange); }
+    .hero p.lead { font-size: var(--fs-lg); color: #d3ddf3; max-width: 620px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+
+    /* ===============================================================
+       6. ABOUT
+       =============================================================== */
+    .about-grid { display: grid; gap: var(--space-4); align-items: center; }
+    .about-img {
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg);
+      aspect-ratio: 4 / 3; background: var(--navy-700);
+    }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .about-points { display: grid; gap: var(--space-1); margin-top: var(--space-2); }
+    .about-points li::before { content: "✔"; color: var(--orange); font-weight: 700; margin-right: 0.6rem; }
+
+    /* Stats / counters */
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-top: var(--space-5); }
+    .stat { text-align: center; padding: var(--space-3) var(--space-2); background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border-bottom: 4px solid var(--orange); }
+    .stat .num { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: var(--navy-800); }
+    .stat p { margin: 0; color: var(--muted); font-size: var(--fs-sm); }
+
+    /* ===============================================================
+       7. SERVICES
+       =============================================================== */
+    .services-grid { display: grid; gap: var(--space-3); grid-template-columns: 1fr; }
+    .service-card {
+      background: var(--white); border-radius: var(--radius); padding: var(--space-3);
+      box-shadow: var(--shadow); border: 1px solid #e6ebf5; cursor: pointer; text-align: left;
+      font: inherit; color: inherit; position: relative; overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .service-card::after {
+      content: ""; position: absolute; left: 0; bottom: 0; height: 4px; width: 0; background: var(--orange);
+      transition: width 0.4s ease;
+    }
+    .service-card:hover, .service-card:focus-visible { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--orange); }
+    .service-card:hover::after, .service-card:focus-visible::after { width: 100%; }
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); color: var(--orange); margin-bottom: var(--space-2);
+      transition: transform var(--transition);
+    }
+    .service-card:hover .service-icon { transform: rotate(-8deg) scale(1.1); }
+    .service-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card h3 { font-size: 1.2rem; font-family: var(--font-body); font-weight: 600; }
+    .service-card p { color: var(--muted); font-size: var(--fs-sm); margin: 0 0 var(--space-1); }
+    .service-card .more { color: var(--orange); font-weight: 600; font-size: var(--fs-sm); }
+
+    /* Service detail modal */
+    .modal {
+      position: fixed; inset: 0; background: rgba(6,18,43,0.8); z-index: 2000;
+      display: none; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal.show { display: flex; animation: fadeIn 0.3s ease; }
+    .modal-box {
+      background: var(--white); border-radius: var(--radius); max-width: 520px; width: 100%;
+      padding: var(--space-4) var(--space-3); position: relative; box-shadow: var(--shadow-lg);
+      animation: pop 0.3s ease;
+    }
+    .modal-close { position: absolute; top: 10px; right: 14px; background: none; border: 0; font-size: 2rem; cursor: pointer; color: var(--muted); line-height: 1; }
+    .modal-close:hover { color: var(--orange); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* ===============================================================
+       8. PORTFOLIO
+       =============================================================== */
+    .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: var(--space-4); }
+    .filter-btn {
+      padding: 0.55rem 1.3rem; border-radius: 50px; border: 2px solid var(--navy-800); background: transparent;
+      color: var(--navy-800); font: 600 var(--fs-sm) var(--font-body); cursor: pointer; transition: all var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+    .portfolio-grid { display: grid; gap: var(--space-2); grid-template-columns: repeat(2, 1fr); }
+    .portfolio-item {
+      position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1;
+      box-shadow: var(--shadow); background: var(--navy-700); transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .portfolio-item.hide { display: none; }
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .portfolio-item:hover img { transform: scale(1.12); }
+    .portfolio-item figcaption {
+      position: absolute; inset: auto 0 0 0; padding: var(--space-2); color: var(--white);
+      background: linear-gradient(transparent, rgba(6,18,43,0.92)); transform: translateY(100%); transition: transform var(--transition);
+    }
+    .portfolio-item:hover figcaption, .portfolio-item:focus-within figcaption { transform: translateY(0); }
+    .portfolio-item figcaption strong { display: block; }
+    .portfolio-item figcaption span { font-size: var(--fs-sm); color: var(--orange); }
+
+    /* ===============================================================
+       9. WHY CHOOSE US
+       =============================================================== */
+    .why-grid { display: grid; gap: var(--space-3); grid-template-columns: 1fr; }
+    .why-item {
+      display: flex; gap: var(--space-2); padding: var(--space-3); border-radius: var(--radius);
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      transition: transform var(--transition), background var(--transition);
+    }
+    .why-item:hover { transform: translateY(-6px); background: rgba(255,255,255,0.12); }
+    .why-num {
+      flex: 0 0 48px; height: 48px; border-radius: 50%; background: var(--orange);
+      display: grid; place-items: center; font-weight: 700; color: var(--white);
+    }
+    .why-item h3 { font-size: 1.1rem; font-family: var(--font-body); margin-bottom: 0.3rem; }
+    .why-item p { margin: 0; color: #c5d0e8; font-size: var(--fs-sm); }
+
+    /* ===============================================================
+       10. EXPORT & INTERNATIONAL
+       =============================================================== */
+    .export-box {
+      display: grid; gap: var(--space-3); align-items: center; padding: var(--space-4) var(--space-3);
+      border-radius: var(--radius); color: var(--white); box-shadow: var(--shadow-lg);
+      background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); border-left: 8px solid var(--orange);
+    }
+    .export-box h2 { color: var(--white); font-size: var(--fs-h2); }
+    .export-box p { color: #d3ddf3; }
+    .globe { width: 140px; height: 140px; margin-inline: auto; color: var(--orange); animation: spin 18s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===============================================================
+       11. CONTACT
+       =============================================================== */
+    .contact-grid { display: grid; gap: var(--space-4); }
+    .contact-info li { display: flex; gap: var(--space-2); margin-bottom: var(--space-2); align-items: flex-start; }
+    .contact-info .ico { flex: 0 0 44px; height: 44px; border-radius: 12px; background: var(--navy-800); color: var(--orange); display: grid; place-items: center; font-size: 1.2rem; }
+    .contact-info strong { display: block; color: var(--navy-800); }
+    .contact-info a:hover { color: var(--orange); }
+
+    form { background: var(--white); padding: var(--space-3); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .field { margin-bottom: var(--space-2); }
+    label { display: block; font-weight: 600; font-size: var(--fs-sm); margin-bottom: 0.3rem; color: var(--navy-800); }
+    input, select, textarea {
+      width: 100%; padding: 0.8rem 1rem; border: 2px solid #dbe2f0; border-radius: 10px;
+      font: inherit; color: var(--text); background: var(--white); transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 4px rgba(255,122,26,0.15); }
+    textarea { min-height: 120px; resize: vertical; }
+    .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: #d93025; }
+    .error-msg { color: #d93025; font-size: 0.82rem; margin-top: 0.25rem; min-height: 1.1em; }
+    .form-success {
+      display: none; padding: 0.9rem 1rem; border-radius: 10px; background: #e6f7ec; color: #17653a;
+      font-weight: 600; margin-bottom: var(--space-2);
+    }
+    .form-success.show { display: block; animation: fadeIn 0.4s ease; }
+    .form-actions { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+    .map-placeholder {
+      margin-top: var(--space-4); min-height: 300px; border-radius: var(--radius); border: 3px dashed var(--orange);
+      background: var(--off-white); display: grid; place-items: center; text-align: center; padding: var(--space-3); color: var(--muted);
+    }
+
+    /* ===============================================================
+       12. FOOTER
+       =============================================================== */
+    .site-footer { background: var(--navy-900); color: #b4c1de; padding: var(--space-4) 0 var(--space-2); }
+    .footer-grid { display: grid; gap: var(--space-3); margin-bottom: var(--space-3); }
+    .site-footer h4 { color: var(--white); font-family: var(--font-body); }
+    .site-footer a:hover { color: var(--orange); }
+    .site-footer li { margin-bottom: 0.4rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--space-2); text-align: center; font-size: var(--fs-sm); }
+
+    /* Back to top button */
+    .to-top {
+      position: fixed; right: 20px; bottom: 20px; width: 46px; height: 46px; border-radius: 50%;
+      background: var(--orange); color: var(--white); border: 0; font-size: 1.3rem; cursor: pointer; z-index: 900;
+      box-shadow: var(--shadow); opacity: 0; visibility: hidden; transform: translateY(20px);
+      transition: all var(--transition);
+    }
+    .to-top.show { opacity: 1; visibility: visible; transform: none; }
+    .to-top:hover { background: var(--orange-dark); }
+
+    /* Scroll reveal animation (JS adds .visible) */
+    .reveal { opacity: 0; transform: translateY(35px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Respect users who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ===============================================================
+       13. RESPONSIVE BREAKPOINTS (mobile-first: we ADD styles for bigger screens)
+       =============================================================== */
+    /* Tablet: 700px and up */
+    @media (min-width: 700px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats { grid-template-columns: repeat(4, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+      .export-box { grid-template-columns: 1fr auto; padding: var(--space-4); }
+    }
+    /* Desktop: 960px and up */
+    @media (min-width: 960px) {
+      .hamburger { display: none; }
+      .nav-links { position: static; flex-direction: row; max-height: none; background: none; overflow: visible; gap: 0.2rem; }
+      .nav-links a { border: 0; padding: 0.5rem 0.9rem; border-radius: 8px; font-size: 0.92rem; }
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .why-grid { grid-template-columns: repeat(3, 1fr); }
+      .contact-grid { grid-template-columns: 1fr 1.2fr; }
+    }
+    /* Large desktop: 1200px and up */
+    @media (min-width: 1200px) {
+      .portfolio-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip link for keyboard / screen reader users -->
+  <a href="#main" class="btn btn--primary" style="position:absolute;left:-999px;top:8px;z-index:3000;" onfocus="this.style.left='8px'" onblur="this.style.left='-999px'">Skip to content</a>
+
+  <!-- ============ HEADER / STICKY NAV ============ -->
+  <header class="site-header" id="siteHeader">
+    <nav class="container nav" aria-label="Main navigation">
+      <!-- LOGO: replace the "D" box with <img src="images/logo.png" alt="Danish Advertising logo"> if you have a logo -->
+      <a href="#home" class="brand" aria-label="DANISH ADVERTISING home">
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span>DANISH <span class="accent">ADVERTISING</span></span>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Add or remove menu items here. Each href must match a section id below. -->
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#export">Export</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-inner">
+          <span class="eyebrow">Mumbai, Maharashtra, India</span>
+          <h1 id="hero-title">Creative Designs. Powerful Printing. <span class="accent">Stronger Brands.</span></h1>
+          <p class="lead">DANISH ADVERTISING is your trusted partner for graphic design in Mumbai, digital printing, packaging design, commercial printing and complete advertising services.</p>
+          <div class="hero-cta">
+            <a href="#services" class="btn btn--primary">Explore Our Services</a>
+            <a href="#contact" class="btn btn--outline">Get a Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-img reveal">
+            <!-- REPLACE IMAGE: put your photo at images/about.jpg (workshop, team or products) -->
+            <img src="images/about.jpg" alt="Danish Advertising design and printing workshop" data-label="About Us" />
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">About Us</span>
+            <h2 id="about-title">Design and print that makes brands stand out</h2>
+            <p>DANISH ADVERTISING is a Mumbai-based creative and printing company focused on graphic design, commercial printing, packaging and customized product design. From a single business card to complete packaging and branded merchandise, we turn ideas into high-quality finished products.</p>
+            <ul class="about-points">
+              <li>Creative graphic design tailored to your brand</li>
+              <li>Digital, offset, DTF, screen and sticker printing</li>
+              <li>Packaging, school bag and raincoat design</li>
+              <li>Customized solutions for local and international clients</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Animated counters. Edit the numbers in data-target. -->
+        <div class="stats" aria-label="Company statistics">
+          <div class="stat reveal"><div class="num"><span class="counter" data-target="1500">0</span>+</div><p>Projects Completed</p></div>
+          <div class="stat reveal"><div class="num"><span class="counter" data-target="600">0</span>+</div><p>Happy Clients</p></div>
+          <div class="stat reveal"><div class="num"><span class="counter" data-target="10">0</span>+</div><p>Years in Business</p></div>
+          <div class="stat reveal"><div class="num"><span class="counter" data-target="12">0</span></div><p>Core Services</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section section--alt" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">What We Do</span>
+          <h2 id="services-title">Our Services</h2>
+          <p>Click any card to see more details. Everything you need for design, printing and advertising, under one roof.</p>
+        </div>
+
+        <!-- Each card is a button. data-detail = text shown in the pop-up. Copy a card to add a service. -->
+        <div class="services-grid" id="servicesGrid">
+
+          <button class="service-card reveal" data-title="Graphic Design" data-detail="Logos, brand identity, social media creatives, posters, flyers and all kinds of custom artwork prepared by our creative team.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg></div>
+            <h3>Graphic Design</h3><p>Logos, branding, posters and creative artwork.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Digital Printing" data-detail="Fast, sharp, full-color digital printing for short runs, banners, posters, flyers and urgent jobs with excellent turnaround.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div>
+            <h3>Digital Printing</h3><p>High-quality, quick-turnaround color printing.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Offset Printing" data-detail="Cost-effective, premium quality printing for large quantities: catalogues, brochures, books, packaging and stationery.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <h3>Offset Printing</h3><p>Large-volume printing with consistent quality.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="DTF Printing" data-detail="Direct-to-Film transfers for T-shirts, hoodies, caps and bags with vibrant colors, fine detail and durable wash resistance.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3l5 4-3 3v11H6V10L3 7l5-4a4 4 0 008 0z"/></svg></div>
+            <h3>DTF Printing</h3><p>Vibrant, durable prints for garments and fabric.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Screen Printing" data-detail="Classic, long-lasting screen printing on apparel, bags, promotional items and more, ideal for bulk orders.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v14H3z"/><path d="M8 21h8M12 17v4"/><path d="M7 8l3 3 4-4 3 3"/></svg></div>
+            <h3>Screen Printing</h3><p>Bold, lasting prints for bulk orders.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Sticker Printing" data-detail="Custom stickers and labels in any shape and size: die-cut, vinyl, waterproof and product labels.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12v8H4V4h8"/><path d="M20 12h-5a3 3 0 00-3 3v5z"/><path d="M16 3l5 5"/></svg></div>
+            <h3>Sticker Printing</h3><p>Custom die-cut stickers and product labels.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Packaging Design" data-detail="Structural and graphic packaging design: boxes, pouches, cartons and labels that protect your product and sell your brand.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></div>
+            <h3>Packaging Design</h3><p>Eye-catching boxes, cartons and labels.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="School Bag Design" data-detail="Original school bag designs and branded prints for manufacturers and retailers, with attractive graphics and kid-friendly themes.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0112 0v13H6z"/><path d="M9 14h6M9 8h6"/></svg></div>
+            <h3>School Bag Design</h3><p>Creative graphics for school bags.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Raincoat Design" data-detail="Fun, colorful and weather-ready raincoat prints and designs for kids and adults, prepared for bulk manufacturing.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0118 0z"/><path d="M12 12v7a2 2 0 004 0"/></svg></div>
+            <h3>Raincoat Design</h3><p>Colorful prints for raincoats and rainwear.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Brochures, Catalogues &amp; Stationery" data-detail="Professionally designed and printed brochures, product catalogues, letterheads, visiting cards, envelopes, bill books and more.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4z"/><path d="M8 9h8M8 13h8"/></svg></div>
+            <h3>Brochures &amp; Stationery</h3><p>Brochures, catalogues and business stationery.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Advertising Materials" data-detail="Banners, standees, hoardings, flex boards, signage and promotional materials to put your brand in front of customers.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a1 1 0 001 1h3l8 5V5L7 10H4a1 1 0 00-1 1z"/><path d="M19 9a4 4 0 010 6"/></svg></div>
+            <h3>Advertising Materials</h3><p>Banners, standees, signage and promotions.</p><span class="more">Learn more →</span>
+          </button>
+
+          <button class="service-card reveal" data-title="Customized Printing Solutions" data-detail="Have a special idea? We create tailor-made printing solutions for corporate gifts, events, merchandise and unique products.">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg></div>
+            <h3>Customized Printing</h3><p>Tailor-made solutions for any special need.</p><span class="more">Learn more →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service detail pop-up (filled by JavaScript) -->
+    <div class="modal" id="serviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-box">
+        <button class="modal-close" id="modalClose" aria-label="Close details">&times;</button>
+        <h3 id="modalTitle"></h3>
+        <p id="modalText"></p>
+        <a href="#contact" class="btn btn--primary" id="modalQuote">Get a Free Quote</a>
+      </div>
+    </div>
+
+    <!-- ============ PORTFOLIO ============ -->
+    <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Our Work</span>
+          <h2 id="portfolio-title">Portfolio</h2>
+          <p>A glimpse of the packaging, logos, brochures, products and advertising projects we deliver.</p>
+        </div>
+
+        <!-- Filter buttons: data-filter must match the data-category values below -->
+        <div class="filters" role="group" aria-label="Filter portfolio">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="packaging">Packaging</button>
+          <button class="filter-btn" data-filter="logos">Logos</button>
+          <button class="filter-btn" data-filter="brochures">Brochures</button>
+          <button class="filter-btn" data-filter="products">Products</button>
+          <button class="filter-btn" data-filter="advertising">Advertising</button>
+        </div>
+
+        <!--
+          REPLACE IMAGE: for each item change src="images/xxx.jpg" to your real photo.
+          Until the file exists, a colored placeholder is generated automatically.
+          To ADD a project, copy one <figure> block, change data-category, src, alt and caption.
+        -->
+        <div class="portfolio-grid" id="portfolioGrid">
+          <figure class="portfolio-item" data-category="packaging">
+            <img src="images/packaging-1.jpg" alt="Custom product box packaging design" data-label="Packaging" />
+            <figcaption><strong>Premium Product Box</strong><span>Packaging</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="logos">
+            <img src="images/logo-1.jpg" alt="Brand logo design sample" data-label="Logo" />
+            <figcaption><strong>Brand Identity</strong><span>Logos</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="brochures">
+            <img src="images/brochure-1.jpg" alt="Tri-fold company brochure design" data-label="Brochure" />
+            <figcaption><strong>Corporate Brochure</strong><span>Brochures</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="products">
+            <img src="images/school-bag-1.jpg" alt="Printed school bag design for kids" data-label="School Bag" />
+            <figcaption><strong>School Bag Design</strong><span>Products</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="products">
+            <img src="images/raincoat-1.jpg" alt="Colorful printed raincoat design" data-label="Raincoat" />
+            <figcaption><strong>Raincoat Prints</strong><span>Products</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="advertising">
+            <img src="images/advertising-1.jpg" alt="Outdoor banner and advertising material" data-label="Advertising" />
+            <figcaption><strong>Banner Campaign</strong><span>Advertising</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="packaging">
+            <img src="images/packaging-2.jpg" alt="Food pouch and carton packaging design" data-label="Packaging" />
+            <figcaption><strong>Pouch &amp; Carton Set</strong><span>Packaging</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="logos">
+            <img src="images/logo-2.jpg" alt="Modern company logo and stationery" data-label="Logo" />
+            <figcaption><strong>Logo &amp; Stationery</strong><span>Logos</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="brochures">
+            <img src="images/catalogue-1.jpg" alt="Product catalogue printed in color" data-label="Catalogue" />
+            <figcaption><strong>Product Catalogue</strong><span>Brochures</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="advertising">
+            <img src="images/advertising-2.jpg" alt="Promotional standee and flex board" data-label="Standee" />
+            <figcaption><strong>Standee &amp; Signage</strong><span>Advertising</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="products">
+            <img src="images/tshirt-1.jpg" alt="DTF printed T-shirt design" data-label="DTF Print" />
+            <figcaption><strong>DTF T-Shirt Print</strong><span>Products</span></figcaption>
+          </figure>
+          <figure class="portfolio-item" data-category="packaging">
+            <img src="images/sticker-1.jpg" alt="Custom die-cut sticker labels" data-label="Stickers" />
+            <figcaption><strong>Sticker Labels</strong><span>Packaging</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="section section--dark" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Why Us</span>
+          <h2 id="why-title">Why Choose DANISH ADVERTISING</h2>
+          <p>Quality, creativity and dependable service on every order.</p>
+        </div>
+        <div class="why-grid">
+          <article class="why-item reveal"><div class="why-num">1</div><div><h3>Creative Design</h3><p>Fresh, original ideas that make your brand memorable.</p></div></article>
+          <article class="why-item reveal"><div class="why-num">2</div><div><h3>Quality Printing</h3><p>Sharp colors and premium finishing across every print method.</p></div></article>
+          <article class="why-item reveal"><div class="why-num">3</div><div><h3>Full Customization</h3><p>Size, material, color and finish made exactly to your needs.</p></div></article>
+          <article class="why-item reveal"><div class="why-num">4</div><div><h3>Attention to Detail</h3><p>Every file is checked carefully before it goes to print.</p></div></article>
+          <article class="why-item reveal"><div class="why-num">5</div><div><h3>Reliable Service</h3><p>Clear communication and on-time delivery you can count on.</p></div></article>
+          <article class="why-item reveal"><div class="why-num">6</div><div><h3>Domestic &amp; International</h3><p>We welcome enquiries from across India and overseas.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPORT & INTERNATIONAL ============ -->
+    <section class="section" id="export" aria-labelledby="export-title">
+      <div class="container">
+        <div class="export-box reveal">
+          <div>
+            <span class="eyebrow">Export &amp; International Business</span>
+            <h2 id="export-title">Customized design and printing for the world</h2>
+            <p>DANISH ADVERTISING is able to serve international buyers, including customers in Saudi Arabia and the Gulf region. We offer customized design and printing solutions for packaging, advertising materials, promotional products and more, prepared to your specifications and requirements.</p>
+            <a href="#contact" class="btn btn--primary">Send an International Enquiry</a>
+          </div>
+          <!-- Simple inline SVG globe icon -->
+          <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--alt" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Get In Touch</span>
+          <h2 id="contact-title">Contact Us</h2>
+          <p>Tell us about your project and get a free quote.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- EDIT CONTACT: replace the placeholder details below with your real details -->
+          <div class="reveal">
+            <h3>DANISH ADVERTISING</h3>
+            <ul class="contact-info">
+              <li><span class="ico" aria-hidden="true">📍</span><div><strong>Location</strong>Mumbai, Maharashtra, India</div></li>
+              <li><span class="ico" aria-hidden="true">📞</span><div><strong>Phone</strong><a href="tel:+91XXXXXXXXXX">+91-XXXXXXXXXX</a></div></li>
+              <li><span class="ico" aria-hidden="true">💬</span><div><strong>WhatsApp</strong><a href="#contact" id="waText">XXXXXXXXXX</a></div></li>
+              <li><span class="ico" aria-hidden="true">✉️</span><div><strong>Email</strong><a href="mailto:email@example.com">email@example.com</a></div></li>
+            </ul>
+            <button type="button" class="btn btn--whatsapp" id="waButton">💬 Enquire on WhatsApp</button>
+          </div>
+
+          <!--
+            NOTE: This form requires a backend or form service to actually deliver enquiries
+            (for example Formspree, Getform or your own server). Right now it only validates
+            the fields and shows a success message in the browser.
+          -->
+          <form id="contactForm" class="reveal" novalidate aria-label="Contact form">
+            <div class="form-success" id="formSuccess" role="status">Thank you! Your enquiry has been received (demo). We will get back to you soon.</div>
+
+            <div class="field">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" />
+              <div class="error-msg" id="nameError"></div>
+            </div>
+            <div class="field">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91-XXXXXXXXXX" autocomplete="tel" />
+              <div class="error-msg" id="phoneError"></div>
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="email@example.com" autocomplete="email" />
+              <div class="error-msg" id="emailError"></div>
+            </div>
+            <div class="field">
+              <label for="service">Service *</label>
+              <select id="service" name="service">
+                <option value="">-- Select a service --</option>
+                <option>Graphic Design</option>
+                <option>Digital Printing</option>
+                <option>Offset Printing</option>
+                <option>DTF Printing</option>
+                <option>Screen Printing</option>
+                <option>Sticker Printing</option>
+                <option>Packaging Design</option>
+                <option>School Bag Design</option>
+                <option>Raincoat Design</option>
+                <option>Brochures / Catalogues / Business Stationery</option>
+                <option>Advertising Materials</option>
+                <option>Customized Printing Solutions</option>
+                <option>Export / International Enquiry</option>
+              </select>
+              <div class="error-msg" id="serviceError"></div>
+            </div>
+            <div class="field">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+              <div class="error-msg" id="messageError"></div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary">Send Enquiry</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- GOOGLE MAPS: Replace this placeholder with your Google Maps embed code
+             (Google Maps > Share > Embed a map > copy the <iframe> and paste it here, deleting this div). -->
+        <div class="map-placeholder reveal" role="region" aria-label="Map placeholder">
+          <div>
+            <strong>📍 Google Map Placeholder</strong>
+            <p>Replace this placeholder with your Google Maps embed code</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>DANISH ADVERTISING</h4>
+          <p>Graphic design, digital printing, packaging design and advertising services in Mumbai, serving clients across India and the Gulf region.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>More</h4>
+          <ul>
+            <li><a href="#why">Why Choose Us</a></li>
+            <li><a href="#export">Export</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <!-- The year updates automatically -->
+        &copy; <span id="year">2026</span> DANISH ADVERTISING. All rights reserved. | Website design: replace with your credit here.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+  <script>
+    /* =====================================================================
+       JAVASCRIPT (vanilla, no libraries)
+       ===================================================================== */
+
+    /* ---------- SETTINGS: EDIT HERE ---------- */
+    // WHATSAPP_NUMBER: country code + number, digits only, no + or spaces.
+    // Example for India: "919876543210". Replace the X's with your real number.
+    const WHATSAPP_NUMBER = "91XXXXXXXXXX";
+    const WHATSAPP_MESSAGE = "Hello DANISH ADVERTISING, I would like to enquire about your services.";
+
+    /* Shortcut helpers */
+    const $  = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    /* ---------- 1. Mobile hamburger menu: toggle open/close; close when a link is clicked ---------- */
+    const hamburger = $("#hamburger");
+    const navLinks = $("#navLinks");
+    function setMenu(open) {
+      navLinks.classList.toggle("open", open);
+      hamburger.classList.toggle("open", open);
+      hamburger.setAttribute("aria-expanded", String(open));
+      hamburger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+    hamburger.addEventListener("click", () => setMenu(!navLinks.classList.contains("open")));
+    $$("#navLinks a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+
+    /* ---------- 2. Smooth scroll for internal links (CSS also handles it; this is a safe fallback) ---------- */
+    $$('a[href^="#"]').forEach(link => {
+      link.addEventListener("click", e => {
+        const id = link.getAttribute("href");
+        if (id.length < 2) return;
+        const target = $(id);
+        if (!target) return;
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+    });
+
+    /* ---------- 3. Header shadow, active nav link and back-to-top button on scroll ---------- */
+    const header = $("#siteHeader");
+    const toTop = $("#toTop");
+    const sections = $$("main section[id]");
+    function onScroll() {
+      header.classList.toggle("scrolled", window.scrollY > 20);
+      toTop.classList.toggle("show", window.scrollY > 400);
+      // Highlight the nav link of the section currently in view
+      let current = "home";
+      sections.forEach(s => { if (window.scrollY + 120 >= s.offsetTop) current = s.id; });
+      $$("#navLinks a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    /* ---------- 4. Scroll-triggered reveal animations ---------- */
+    const revealObserver = "IntersectionObserver" in window
+      ? new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add("visible"); obs.unobserve(entry.target); }
+          });
+        }, { threshold: 0.12 })
+      : null;
+    $$(".reveal").forEach(el => revealObserver ? revealObserver.observe(el) : el.classList.add("visible"));
+
+    /* ---------- 5. Animated counters: count up when visible ---------- */
+    function animateCounter(el) {
+      const target = Number(el.dataset.target);
+      const duration = 1800; // milliseconds
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(progress * target).toLocaleString();
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target.toLocaleString();
+      }
+      requestAnimationFrame(step);
+    }
+    if ("IntersectionObserver" in window) {
+      const counterObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { animateCounter(entry.target); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.6 });
+      $$(".counter").forEach(c => counterObserver.observe(c));
+    } else {
+      $$(".counter").forEach(c => c.textContent = c.dataset.target);
+    }
+
+    /* ---------- 6. Service cards: open a detail pop-up (modal) ---------- */
+    const modal = $("#serviceModal");
+    const modalTitle = $("#modalTitle");
+    const modalText = $("#modalText");
+    let lastFocused = null;
+    function openModal(card) {
+      lastFocused = card;
+      modalTitle.textContent = card.dataset.title;
+      modalText.textContent = card.dataset.detail;
+      modal.classList.add("show");
+      $("#modalClose").focus();
+    }
+    function closeModal() {
+      modal.classList.remove("show");
+      if (lastFocused) lastFocused.focus();
+    }
+    $$(".service-card").forEach(card => card.addEventListener("click", () => openModal(card)));
+    $("#modalClose").addEventListener("click", closeModal);
+    $("#modalQuote").addEventListener("click", () => modal.classList.remove("show"));
+    modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && modal.classList.contains("show")) closeModal(); });
+
+    /* ---------- 7. Portfolio category filter ---------- */
+    const filterButtons = $$(".filter-btn");
+    const portfolioItems = $$(".portfolio-item");
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+        filterButtons.forEach(b => b.classList.toggle("active", b === btn));
+        portfolioItems.forEach(item => {
+          const show = filter === "all" || item.dataset.category === filter;
+          item.classList.toggle("hide", !show);
+        });
+      });
+    });
+
+    /* ---------- 8. Placeholder images ----------
+       If an image file is missing (e.g. images/logo-1.jpg not added yet),
+       this creates a colored SVG placeholder with the image's data-label text.
+       Once you add the real file, the real picture shows automatically. */
+    const placeholderColors = ["#12285a", "#1d3f86", "#0e2250", "#b8560d", "#2a4a8f", "#8a3f0a"];
+    function makePlaceholder(img, index) {
+      const label = img.dataset.label || "Image";
+      const color = placeholderColors[index % placeholderColors.length];
+      const svg =
+        "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'>" +
+        "<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>" +
+        "<stop offset='0' stop-color='" + color + "'/><stop offset='1' stop-color='#06122b'/></linearGradient></defs>" +
+        "<rect width='400' height='400' fill='url(#g)'/>" +
+        "<circle cx='320' cy='80' r='60' fill='#ff7a1a' opacity='0.35'/>" +
+        "<rect x='140' y='130' width='120' height='90' rx='10' fill='none' stroke='#ffffff' stroke-width='5' opacity='0.8'/>" +
+        "<circle cx='175' cy='160' r='11' fill='#ff7a1a'/>" +
+        "<path d='M146 212l35-35 25 25 20-20 28 30' fill='none' stroke='#ffffff' stroke-width='5' opacity='0.8'/>" +
+        "<text x='200' y='280' fill='#ffffff' font-family='Arial,sans-serif' font-size='26' font-weight='bold' text-anchor='middle'>" + label + "</text>" +
+        "<text x='200' y='312' fill='#ffd2b0' font-family='Arial,sans-serif' font-size='16' text-anchor='middle'>Replace with your image</text>" +
+        "</svg>";
+      img.onerror = null;
+      img.src = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+    $$("img[data-label]").forEach((img, i) => {
+      img.addEventListener("error", () => makePlaceholder(img, i), { once: true });
+      // If the image already failed before this script ran:
+      if (img.complete && img.naturalWidth === 0) makePlaceholder(img, i);
+    });
+
+    /* ---------- 9. WhatsApp enquiry (opens wa.me with your number) ---------- */
+    function openWhatsApp(customText) {
+      const text = encodeURIComponent(customText || WHATSAPP_MESSAGE);
+      window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + text, "_blank", "noopener");
+    }
+    $("#waButton").addEventListener("click", () => openWhatsApp());
+    $("#waText").addEventListener("click", e => { e.preventDefault(); openWhatsApp(); });
+    $("#waText").textContent = WHATSAPP_NUMBER;
+
+    /* ---------- 10. Contact form validation ----------
+       NOTE: This form requires a backend or form service to actually deliver enquiries.
+       To connect a service like Formspree, set the form's action attribute and
+       replace the "demo success" code below with a fetch() call. */
+    const form = $("#contactForm");
+    const success = $("#formSuccess");
+    const rules = {
+      name:    { test: v => v.trim().length >= 2, msg: "Please enter your name (at least 2 characters)." },
+      phone:   { test: v => /^[+]?[\d\s\-()]{7,18}$/.test(v.trim()), msg: "Please enter a valid phone number." },
+      email:   { test: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()), msg: "Please enter a valid email address." },
+      service: { test: v => v !== "", msg: "Please select a service." },
+      message: { test: v => v.trim().length >= 10, msg: "Please enter a message (at least 10 characters)." }
+    };
+    function validateField(name) {
+      const input = form.elements[name];
+      const ok = rules[name].test(input.value);
+      input.closest(".field").classList.toggle("invalid", !ok);
+      $("#" + name + "Error").textContent = ok ? "" : rules[name].msg;
+      input.setAttribute("aria-invalid", String(!ok));
+      return ok;
+    }
+    Object.keys(rules).forEach(name => {
+      const input = form.elements[name];
+      input.addEventListener("blur", () => validateField(name));
+      input.addEventListener("input", () => { if (input.closest(".field").classList.contains("invalid")) validateField(name); });
+    });
+    form.addEventListener("submit", e => {
+      e.preventDefault(); // stop the page from reloading
+      success.classList.remove("show");
+      const allValid = Object.keys(rules).map(validateField).every(Boolean);
+      if (!allValid) { const bad = $(".field.invalid input, .field.invalid select, .field.invalid textarea", form); if (bad) bad.focus(); return; }
+      // DEMO ONLY: nothing is sent anywhere. Connect a backend or form service here.
+      success.classList.add("show");
+      form.reset();
+    });
+
+    /* ---------- 11. Footer year ---------- */
+    $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
