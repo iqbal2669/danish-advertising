@@ -33,6 +33,7 @@ function deleteTask(index) {
   {tasks.map((item, index) => (
     <li key={index}>
   {item}
+  
   <button onClick={() => deleteTask(index)}>Delete</button>
 </li>
   ))}

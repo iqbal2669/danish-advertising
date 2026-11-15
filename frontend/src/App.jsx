@@ -104,9 +104,9 @@ function App() {
           </div>
 
           <div className="service-card">
-            <span>🌍</span>
-            <h3>Export Solutions</h3>
-            <p>Product supply and export solutions for international clients.</p>
+            <span>🎁</span>
+<h3>Gifting & Stationery</h3>
+<p>Corporate gifting, office and school stationery with custom branding and printing.</p>
           </div>
         </div>
       </section>
@@ -116,8 +116,9 @@ function App() {
         <p className="section-tag">OUR WORK</p>
         <h2>Products & Solutions</h2>
         <p>
-          Creative designs, printing products, school bags,
-          raincoats and customised packaging.
+         Creative graphic designs, professional printing,
+school bags, raincoats, corporate gifting, office and
+school stationery, and customised packaging.
         </p>
       </section>
 
@@ -128,7 +129,7 @@ function App() {
         <p>Contact Danish Advertising for your next project.</p>
         <a
           className="primary-btn"
-          href="https://wa.me/91XXXXXXXXXX"
+          href="https://wa.me/919930202669"
           target="_blank"
           rel="noreferrer"
         >
