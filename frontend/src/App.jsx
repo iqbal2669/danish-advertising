@@ -1,6 +1,7 @@
 import './App.css'
-import danishLogo from './assets/Danish logo.png'
-import TodoList from './TodoList.jsx'
+import danishLogo from "./assets/Danish_logo.png";
+import iqbalFace from "./assets/Iqbal Face.png";
+import TodoList from './TodoList.jsx';
 function App() {
   return (
     <div className="website">
@@ -65,6 +66,29 @@ function App() {
           professional printing, packaging and product development
           solutions. We help businesses turn their ideas into reality.
         </p>
+        <div className="founder-profile">
+  <img src={iqbalFace} alt="Iqbal Salam" />
+  <h3>Iqbal Salam</h3>
+  <p>Founder & Creative Director</p>
+<div className="skill-tabs">
+  <details name="profile-skills" className="skill-tab graphic-tab">
+  <summary>🎨 GRAPHIC DESIGN</summary>
+  <ul>
+    <li>CorelDRAW</li>
+    <li>Adobe Photoshop</li>
+    <li>Adobe Illustrator</li>
+    <li>Logo Design</li>
+    <li>Branding & Corporate Identity</li>
+    <li>Printing & Packaging Design</li>
+  </ul>
+</details>
+
+  <details name="profile-skills" className="skill-tab ai-tab">
+    <summary>🤖 AI MASTERY</summary>
+    <p>ChatGPT, Gemini, AI Image Generation and AI-Based Creative Design.</p>
+  </details>
+</div>
+</div>
       </section>
 
       {/* Services */}
@@ -100,7 +124,7 @@ function App() {
           <div className="service-card">
             <span>🌧️</span>
             <h3>Raincoats</h3>
-            <p>Raincoat design and product development.</p>
+            <p>Raincoat Design, Visualizer &amp; AI Designer.</p>
           </div>
 
           <div className="service-card">
@@ -111,22 +135,59 @@ function App() {
         </div>
       </section>
 
-      {/* Products */}
-      <section className="products" id="products">
-        <p className="section-tag">OUR WORK</p>
-        <h2>Products & Solutions</h2>
-        <p>
-         Creative graphic designs, professional printing,
-school bags, raincoats, corporate gifting, office and
-school stationery, and customised packaging.
-        </p>
-      </section>
+     {/* Products */}
+<section className="products" id="products">
+  <p className="section-tag">OUR WORK</p>
+  <h2>Products & Solutions</h2>
+  <p>
+    Creative graphic designs, professional printing, school bags,
+    raincoats, corporate gifting, office and school stationery,
+    and customised packaging.
+  </p>
+
+  <div className="product-grid">
+    <div className="product-card">
+      <h3>School Bags</h3>
+      <p>School bags with customised designs and printing.</p>
+    </div>
+
+    <div className="product-card">
+      <h3>Raincoats</h3>
+      <p>Kids and adult rainwear with customised designs.</p>
+    </div>
+
+    <div className="product-card">
+      <h3>Corporate Gifting</h3>
+      <p>Customised gifts and promotional products.</p>
+    </div>
+
+    <div className="product-card">
+      <h3>Office & School Stationery</h3>
+      <p>Daily-use stationery and customised school products.</p>
+    </div>
+
+    <div className="product-card">
+      <h3>Customised Packaging</h3>
+      <p>Creative packaging design and printing solutions.</p>
+    </div>
+
+    <div className="product-card">
+      <h3>Printing Products</h3>
+      <p>Professional printing for business and personal needs.</p>
+    </div>
+  </div>
+</section>
 
       {/* Contact */}
       <section className="contact" id="contact">
         <p className="section-tag">LET'S WORK TOGETHER</p>
         <h2>Have a Project in Mind?</h2>
         <p>Contact Danish Advertising for your next project.</p>
+        <p><strong>Address:</strong> Zoya Apartment, Ground Floor, Opp. Royal Palace Hall, Pailipada, Trombay, Mumbai – 400088.</p>
+
+<p><strong>WhatsApp:</strong> +91 9930202669</p>
+
+<p><strong>Email:</strong> danishadvt@gmail.com</p>
         <a
           className="primary-btn"
           href="https://wa.me/919930202669"
@@ -136,7 +197,7 @@ school stationery, and customised packaging.
           WhatsApp Us
         </a>
       </section>
-<TodoList />
+
       {/* Footer */}
       <footer>
         <h3>DANISH ADVERTISING</h3>
@@ -149,3 +210,5 @@ school stationery, and customised packaging.
 }
 
 export default App
+
+ 
